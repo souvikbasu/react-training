@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router'
 
 class Main extends Component {
     render(){
@@ -9,9 +10,9 @@ class Main extends Component {
                 </div>
 
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#car">Car</a></li>
-                    <li><a href="#about">About</a></li>
+                    <li><Link to="/" activeClassName="active">Home</Link></li>
+                    <li><Link to="/cars" activeClassName="active">Car</Link></li>
+                    <li><Link to="/about" activeClassName="active">About</Link></li>
                 </ul>
 
                 <div className="container" style={{ padding: 20 }}>

@@ -5,17 +5,13 @@
   "license": "MIT",
   "author": "Souvik Basu",
   "scripts": {
-    "build": "node_modules/.bin/webpack",
-    "server": "node server/server.js",
-    "start": "npm run build && npm run server"
+    "start": "webpack-dev-server"
   },
   "dependencies": {
-    "express": "^4.15.4",
     "html-webpack-plugin": "^2.26.0",
     "path": "^0.12.7",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "react-router": "^2.0.0",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.3.0"
   },

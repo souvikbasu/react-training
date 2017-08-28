@@ -18,7 +18,7 @@ export default class Speaker extends React.Component {
 
     removeProposal(proposal) {
         let proposals = this.state.proposals;
-        proposals.splice(proposals.indexOf(proposal), 1)
+        proposals.splice(proposals.indexOf(proposal), 1);
         this.setState({
             proposals: proposals
         });

@@ -3,19 +3,14 @@ import {connect} from 'react-redux';
 import * as speakerActions from '../actions/speakerActions';
 
 function Proposals(props) {
-    let proposals = [];
-
-    if (props.speakers) {
-        for (let speaker of props.speakers) {
-            proposals = proposals.concat(speaker.proposals);
-        }
+    let proposalsDOM;
+    if(props.proposals) {
+        proposalsDOM = props.proposals.map(p =>
+            <li key={p.id} onClick={props.selectProposal.bind(this, p)}>
+                {p.title}
+            </li>
+        );
     }
-
-    const proposalsDOM = proposals.map(p =>
-        <li key={p.id} onClick={props.selectProposal.bind(this, p)}>
-            {p.title}
-        </li>
-    );
 
     return (
         <div>
@@ -27,7 +22,7 @@ function Proposals(props) {
 
 const mapStateToProps = (state) => {
     return {
-        speakers: state.speakers,
+        proposals: [].concat.apply([], state.speakers.map(s => s.proposals)),
         selectedSpeaker: state.selectedSpeaker
     }
 };

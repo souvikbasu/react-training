@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mutations</title>
+
+    <!--<script src="https://wzrd.in/standalone/expect@latest"></script>-->
+    <script src="expect.es5.js"></script>
+
+    <!--<script src="https://wzrd.in/standalone/deep-freeze@latest"></script>-->
+    <script src="deep-freeze.es5.js"></script>
+</head>
+<body>
+
+
+<script>
+    const addCounter = (list) => {
+        //bad
+        // list.push(0);
+        // return list;
+
+        // good
+        // return list.concat([0]);
+
+        // better
+        return [...list, 0];
+    };
+
+    const removeCounter = (list, index) => {
+        //bad
+        // list.splice(index, 1);
+        // return list;
+
+        // good
+        // return list
+        //     .slice(0, index)
+        //     .concat(list.slice(index + 1));
+
+        // better
+        return [...list.slice(0, index), ...list.slice(index + 1)];
+    };
+
+
+    const incrementCounter = (list, index) => {
+        //bad
+        // list[index]++;
+        // return list;
+
+        // good
+        // return list
+        //     .slice(0, index)
+        //     .concat([list[index] + 1])
+        //     .concat(list.slice(index + 1));
+
+        // better
+        return [...list.slice(0, index), list[index] + 1, ...list.slice(index + 1)];
+    };
+
+
+    const testAddCounter = () => {
+        const listBefore = [];
+        const listAfter = [0];
+
+        deepFreeze(listBefore);
+
+        expect(
+            addCounter(listBefore)
+        ).toEqual(listAfter);
+    };
+
+    const testRemoveCounter = () => {
+        const listBefore = [0, 10, 20];
+        const listAfter = [0, 20];
+
+        deepFreeze(listBefore);
+
+        expect(
+            removeCounter(listBefore, 1)
+        ).toEqual(listAfter);
+    };
+
+    const testIncrementCounter = () => {
+        const listBefore = [0, 10, 20];
+        const listAfter = [0, 11, 20];
+
+        deepFreeze(listBefore);
+
+        expect(
+            incrementCounter(listBefore, 1)
+        ).toEqual(listAfter);
+    };
+
+    testAddCounter();
+    testRemoveCounter();
+    testIncrementCounter();
+
+    console.log('All tests passed!!')
+</script>
+
+</body>
+</html>

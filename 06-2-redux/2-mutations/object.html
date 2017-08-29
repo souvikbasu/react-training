@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mutations</title>
+
+    <!--<script src="https://wzrd.in/standalone/expect@latest"></script>-->
+    <script src="expect.es5.js"></script>
+
+    <!--<script src="https://wzrd.in/standalone/deep-freeze@latest"></script>-->
+    <script src="deep-freeze.es5.js"></script>
+</head>
+<body>
+
+
+<script>
+    const toggleTodo = (todo) => {
+
+        // bad
+        // todo.completed = !todo.completed;
+        // return todo;
+
+        // good
+        // return {
+        //    id: todo.id,
+        //    text: todo.text,
+        //    completed: !todo.completed
+        // };
+
+        // better
+        // return Object.assign({}, todo, {completed: true});
+
+        // better (es7)
+        return {
+            ...todo,
+            completed: !todo.completed
+        }
+    };
+
+    const testToggleTodo = () => {
+        const todoBefore = {
+            id: 0,
+            text: 'Learn Redux',
+            completed: false
+        };
+        const todoAfter = {
+            id: 0,
+            text: 'Learn Redux',
+            completed: true
+        };
+
+
+        deepFreeze(todoBefore);
+
+        expect(
+            toggleTodo(todoBefore)
+        ).toEqual(todoAfter);
+    };
+
+    testToggleTodo();
+
+    console.log('All tests passed!!')
+</script>
+
+</body>
+</html>

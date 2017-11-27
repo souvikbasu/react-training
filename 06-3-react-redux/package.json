@@ -5,7 +5,7 @@
   "license": "MIT",
   "author": "Souvik Basu",
   "scripts": {
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server --port 3000"
   },
   "dependencies": {
     "html-webpack-plugin": "^2.26.0",

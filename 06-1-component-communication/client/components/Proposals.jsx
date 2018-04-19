@@ -3,14 +3,14 @@ import React from 'react';
 export default class Proposals extends React.Component {
     constructor(props) {
         super(props);
-        this.state = props.data;
+        this.state = props.speakerList;
     }
 
     componentDidMount() {
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setState({speakers: nextProps.data.speakers});
+        this.setState({speakers: nextProps.speakerList.speakers});
     }
 
     componentWillUnmount() {

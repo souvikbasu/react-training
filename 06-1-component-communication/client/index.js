@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import data from './models/data';
+import speakerList from './models/speakerList';
 import Conference from "./components/Conference.jsx";
 
 ReactDOM.render(
-    <Conference data={data} />,
+    <Conference speakerList={speakerList} />,
     document.getElementById('root')
 );

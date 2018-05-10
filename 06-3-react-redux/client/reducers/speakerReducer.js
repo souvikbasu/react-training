@@ -20,16 +20,22 @@ export default (state = {}, action) => {
                         ...speaker.proposals.slice(0, proposalIndex),
                         ...speaker.proposals.slice(proposalIndex + 1)
                     ];
-                    speaker = {
+                    let newSpeaker = {
                         ...speaker,
                         proposals: proposals
                     };
 
+                    let selectedSpeaker = state.selectedSpeaker;
+                    if(selectedSpeaker === speaker) {
+                        selectedSpeaker = newSpeaker;
+                    }
+
                     return {
                         ...state,
+                        selectedSpeaker: selectedSpeaker,
                         speakers: [
                             ...state.speakers.slice(0, i),
-                            speaker,
+                            newSpeaker,
                             ...state.speakers.slice(i + 1)
                         ]
                     };

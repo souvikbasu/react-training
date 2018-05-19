@@ -11,7 +11,6 @@ describe('App component', () => {
   });
 
   it('Should have number set to 1', () => {
-    console.log(container.find('.number'))
     expect(container.find('.number').text()).to.equal("1");
   });
 });

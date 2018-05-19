@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="App"
+  style={
+    Object {
+      "textAlign": "center",
+    }
+  }
+>
+  <span>
+    Number : 
+  </span>
+  <span
+    className="number"
+  >
+    4
+  </span>
+</div>
+`;

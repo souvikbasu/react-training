@@ -5,13 +5,13 @@ export default class App extends React.Component {
     super(props);
 
     this.state = {
-      number: 0
+      number: 4
     }
   }
 
   render() {
     return (
-      <div style={{textAlign: 'center'}} >
+      <div style={{textAlign: 'center'}} className="App" >
         <span>Number : </span>
         <span className="number">{this.state.number}</span>
       </div>);
